@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:userId', function (req, res, next) {
   res.send('userId route')
-}))
+});
 
 // matches POST requests to /api/users/
 router.post('/', function (req, res, next) {

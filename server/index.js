@@ -4,6 +4,7 @@ const path = require('path')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const apiRoutes = require('./apiRoutes')
+const port = process.env.PORT || 3000;
 
 // Logging Middleware
 app.use(morgan('dev'))
@@ -28,4 +29,9 @@ app.use(function (err, req, res, next) {
   console.error(err);
   console.error(err.stack)
   res.status(err.status || 500).send(err.message || ' Internal Server Error')
+})
+
+//Give it ears
+app.listen(port, function(){
+  console.log(`Server is listening on port ${port}`)
 })
