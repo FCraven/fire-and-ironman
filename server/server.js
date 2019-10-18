@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express()
+const session = require('express-session')
 const path = require('path')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const apiRoutes = require('./apiRoutes')
+const SESSION_SECRET = require('../secrets')
+const sessionConfig = {
+  secret: process.env.SESSION_SECRET || SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}
 
 // Logging Middleware
 app.use(morgan('dev'))
@@ -14,6 +21,9 @@ app.use(express.static(path.join(__dirname, '../public')))
 //Body Parsing Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+//Session Middleware
+app.use(session(sessionConfig))
 
 // API Routes
 app.use('/api', apiRoutes)
