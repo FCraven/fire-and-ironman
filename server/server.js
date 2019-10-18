@@ -1,16 +1,14 @@
 const express = require('express');
-const app = express()
-const session = require('express-session')
-const path = require('path')
-const morgan = require('morgan')
-const bodyParser = require('body-parser')
-const apiRoutes = require('./apiRoutes')
-const SESSION_SECRET = require('../secrets')
-const sessionConfig = {
-  secret: process.env.SESSION_SECRET || SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}
+const app = express();
+const db = require('./db/index');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const dbStore = new SequelizeStore({db: db})
+const path = require('path');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const apiRoutes = require('./apiRoutes');
+const SESSION_SECRET = require('../secrets');
 
 // Logging Middleware
 app.use(morgan('dev'))
@@ -23,7 +21,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //Session Middleware
-app.use(session(sessionConfig))
+app.use(session({
+  secret: process.env.SESSION_SECRET || SESSION_SECRET,
+  store: dbStore,
+  resave: false,
+  saveUninitialized: false,
+}));
+dbStore.sync();
+
+//All routes below here
 
 // API Routes
 app.use('/api', apiRoutes)
