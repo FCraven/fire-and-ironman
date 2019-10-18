@@ -7,6 +7,7 @@ const dbStore = new SequelizeStore({db: db})
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const parseurl = require('parseurl')
 const apiRoutes = require('./apiRoutes');
 const SESSION_SECRET = require('../secrets');
 
@@ -21,13 +22,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //Session Middleware
+dbStore.sync();
 app.use(session({
   secret: process.env.SESSION_SECRET || SESSION_SECRET,
   store: dbStore,
   resave: false,
   saveUninitialized: false,
 }));
-dbStore.sync();
+
+//store page views per user
+app.use(function (req, res, next) {
+  if (!req.session.views) {
+    req.session.views = {}
+  }
+
+  // get the url pathname
+  var pathname = parseurl(req).pathname
+
+  // count the views
+  req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
+
+  next()
+})
 
 //All routes below here
 
