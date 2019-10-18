@@ -5,5 +5,5 @@ const port = process.env.PORT || 3000;
 db.sync()
   .then(function() {
     app.listen(port)
-    console.log(`Server listening on ${port} and DB synced`)
+    console.log(`Server listening on ${port}`)
   })
