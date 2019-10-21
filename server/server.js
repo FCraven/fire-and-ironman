@@ -10,7 +10,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const parseurl = require('parseurl')
 const apiRoutes = require('./apiRoutes');
-const SESSION_SECRET = require('../secrets');
+const { SESSION_SECRET } = require('../secrets');
 const User = require('./db/User')
 
 // Logging Middleware
