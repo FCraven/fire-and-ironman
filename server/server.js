@@ -71,8 +71,6 @@ passport.deserializeUser((id, done) => {
 //AUTH routes
 app.use('/auth', authRoutes)
 
-
-
 // API Routes
 app.use('/api', apiRoutes)
 
