@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 router.use('/login', require('./login'))
 router.use('/me', require('./me'))
-router.use('./logout.js')
+router.use('./logout', require('./logout'))
 
 //404 Error Handler
 router.use(function (req, res, next) {
