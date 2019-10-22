@@ -9,6 +9,7 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const parseurl = require('parseurl')
+const authRoutes = require('./authRoutes')
 const apiRoutes = require('./apiRoutes');
 const { SESSION_SECRET } = require('../secrets');
 const User = require('./db/User')
@@ -66,6 +67,11 @@ passport.deserializeUser((id, done) => {
 
 
 //All routes below here
+
+//AUTH routes
+app.use('/auth', authRoutes)
+
+
 
 // API Routes
 app.use('/api', apiRoutes)
