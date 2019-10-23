@@ -1,3 +1,3 @@
-import reducer from './reducer'
+import store from './store';
 
-export { reducer }
+export default store;
