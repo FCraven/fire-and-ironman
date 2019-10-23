@@ -6,7 +6,7 @@ import store from './redux/index'
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>HelloWorld</div>
+    <div>Hello World</div>
   </Provider>
   ,
   document.getElementById('App')

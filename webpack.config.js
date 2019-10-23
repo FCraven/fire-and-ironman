@@ -10,11 +10,21 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader'
+        },
+        options: {
+          presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
       }
     ]
   }
-}
+};
