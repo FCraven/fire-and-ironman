@@ -26,12 +26,13 @@ const User = db.define('user', {
   salt: {
     type: Sequelize.STRING
   }
-}, {
+} , {
   hooks: {
     beforeCreate: setSaltAndPassword,
     beforeUpdate: setSaltAndPassword
   }
-});
+}
+);
 
 //Instance methods
 User.prototype.correctPassword = function(candidatePassword) {

@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 router.use('/login', require('./login'))
 router.use('/logout', require('./logout'))
-router.use('/signup', require('./signup'))
+router.use('/signup', require('../routes/signup'))
 router.use('/me', require('./me'))
 
 

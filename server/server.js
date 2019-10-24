@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const db = require('./db/index');
 const session = require('express-session');
-const passport = require('passport')
+// const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dbStore = new SequelizeStore({db: db})
 const path = require('path');
@@ -12,7 +12,7 @@ const parseurl = require('parseurl')
 const authRoutes = require('./authRoutes')
 const apiRoutes = require('./apiRoutes');
 const { SESSION_SECRET } = require('../secrets');
-const User = require('./db/User')
+// const User = require('./db/User')
 
 // Logging Middleware
 app.use(morgan('dev'))
@@ -33,6 +33,26 @@ app.use(session({
   saveUninitialized: false,
 }));
 
+// Passport middleware
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// //Serialize user
+// passport.serializeUser((user, done) => {
+//   try {
+//     done(null, user.id);
+//   } catch (err) {
+//     done(err);
+//   }
+// });
+
+// //Deserialize user
+// passport.deserializeUser((id, done) => {
+//   User.findByPk(id)
+//     .then(user => done(null, user))
+//     .catch(done);
+// });
+
 //store page views per user
 app.use(function (req, res, next) {
   if (!req.session.views) {
@@ -45,25 +65,6 @@ app.use(function (req, res, next) {
   next()
 })
 
-//Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-//Serialize user
-passport.serializeUser((user,done) => {
-  try {
-    done(null, user.id);
-  } catch (err){
-      done(err)
-  }
-})
-
-//Deserialize user
-passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then(user => done(null,user))
-      .catch(done)
-})
 
 
 //All routes below here

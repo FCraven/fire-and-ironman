@@ -7,6 +7,7 @@ router.get('/', (req, res, next) => {
 
 router.put('/login', async (req, res, next) => {
   try{
+    
     const user =  await User.findOne({
         where: {
           email: req.body.email
