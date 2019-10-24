@@ -72,7 +72,8 @@ app.use(function (req, res, next) {
 //AUTH routes
 app.use('/auth', authRoutes)
 
-
+//Signup
+app.use('/signup', require('./routes/signup'))
 
 // API Routes
 app.use('/api', apiRoutes)
