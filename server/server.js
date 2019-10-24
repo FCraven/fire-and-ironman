@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const db = require('./db/index');
 const session = require('express-session');
-// const passport = require('passport')
+const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dbStore = new SequelizeStore({db: db})
 const path = require('path');
@@ -72,8 +72,6 @@ app.use(function (req, res, next) {
 //AUTH routes
 app.use('/auth', authRoutes)
 
-//Signup
-app.use('/signup', require('./routes/signup'))
 
 // API Routes
 app.use('/api', apiRoutes)
