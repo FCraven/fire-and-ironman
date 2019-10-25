@@ -21,20 +21,18 @@ export default class SignUp extends Component {
     })
   }
 
-  handleSubmit (event) {
+  async handleSubmit (event) {
     event.preventDefault()
     const newUser = this.state
-    // const res = await axios.post('/auth/signup', newUser)
-    console.log(newUser)
-    //blah blah
-
+    const res = await axios.post('/auth/signup', newUser)
+    console.log(res)
   }
 
 
   render() {
     return (
-      <div id='container'>
-        <div id='header'>
+      <div>
+        <div>
           SIGN UP
         </div>
         <form onSubmit={this.handleSubmit}
