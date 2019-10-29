@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ErrMsg = ({ errMsg, closeErrMsg }) => {
-  console.log(`errMsg---->`, errMsg)
   const style = {
     infoContainer: {
       display: 'flex',

@@ -1,3 +1,3 @@
-import ErrorMsg from './ErrorMsg'
+import ErrMsg from './ErrMsg'
 
-export { ErrorMsg }
+export { ErrMsg }

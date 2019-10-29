@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { ErrMsg } from '../util'
+import './Signup.css'
+import { ErrMsg } from '../../util'
 
 
 export default class SignUp extends Component {
@@ -20,7 +21,7 @@ export default class SignUp extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.closeErrMsg = this.closeErrMsg.bind(this)
-    this.confirmPassword = this.confirmPassword.bind(this)
+    // this.confirmPassword = this.confirmPassword.bind(this)
   }
 
   handleChange(event) {
@@ -51,34 +52,29 @@ export default class SignUp extends Component {
     })
   }
 
-  confirmPassword(){
-    const password = this.state.password;
-    const confirmPassword = this.state.confirmPassword;
+  // confirmPassword() {
+  //   const password = this.state.password;
+  //   const confirmPassword = this.state.confirmPassword;
 
-    if(password !== confirmPassword) {
-        this.setState({
-          errMessage: 'Passwords do not match.'})
-    } else {
-        return true;
-    }
+  //   if (password !== confirmPassword) {
+  //     this.setState({
+  //       errMessage: 'Passwords do not match.'
+  //     })
+  //   } else {
+  //     return true;
+  //   }
 
-  }
+  // }
 
   render() {
     return (
+      <section id='signup-container' >
 
-      <div>
-        <div>
+        <header id='signup-header'>
           SIGN UP
-        </div>
-        <form onSubmit={this.handleSubmit}
-          style={{
-            display: 'flex',
-            flexFlow: 'column nowrap',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}>
-
+        </header>
+        <hr id='signup-hr' />
+        <form id='signup-form' onSubmit={this.handleSubmit}>
           <label htmlFor='firstName'>First Name: </label>
           <input name='firstName'
             type='text'
@@ -105,7 +101,7 @@ export default class SignUp extends Component {
             value={this.state.password}
             onChange={this.handleChange} />
 
-            {this.state.isEmailTaken ?
+          {this.state.isEmailTaken ?
             <ErrMsg errMsg={this.state.errMsg}
               closeErrMsg={this.closeErrMsg} />
             : null}
@@ -118,8 +114,13 @@ export default class SignUp extends Component {
 
 
           <button type='submit'>Submit</button>
+
+          <div>
+            <h5>Already signed up?</h5>
+            <div>Login Link</div>
+          </div>
         </form>
-      </div>
+      </section>
     )
   }
 }
