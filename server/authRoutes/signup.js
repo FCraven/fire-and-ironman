@@ -17,7 +17,8 @@ router.post('/', async (req, res, next) => {
       //   if (err) next(err);
       //   else res.json(user.sanitize());
       // });
-      res.status(200).json(user.sanitize())
+      res.status(202).send('That email is already being used. \nPlease enter another.')
+      // .json(user.sanitize())
     } else {
       const newUser =  await User.create(req.body)
       // req.login(newUser, err => {
@@ -26,8 +27,6 @@ router.post('/', async (req, res, next) => {
       // });
       res.status(200).json(newUser.sanitize())
     }
-    console.log(`User ==--+-->`, user)
-
   } catch(err){
       next(err)
   }
