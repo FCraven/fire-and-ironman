@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import './Signup.css'
 import { ErrMsg } from '../../util'
+import { NavLink } from 'react-router-dom'
 
 
 export default class SignUp extends Component {
@@ -69,7 +70,6 @@ export default class SignUp extends Component {
   render() {
     return (
       <section id='signup-container' >
-
         <header id='signup-header'>
           SIGN UP
         </header>
@@ -80,48 +80,53 @@ export default class SignUp extends Component {
             type='text'
             value={this.state.firstName}
             onChange={this.handleChange}
-            placeholder='First Name...'
             required />
 
-          <label htmlFor='lastName'>Last Name: </label>
+          <label htmlFor='lastName'>Last Name</label>
           <input name='lastName'
             type='text'
             value={this.state.lastName}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required />
 
           <label htmlFor='email'>Email: </label>
           <input name='email'
             type='email'
             value={this.state.email}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required />
 
           <label htmlFor='password'>Password: </label>
           <input type='password'
             name='password'
             value={this.state.password}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required />
 
-          {this.state.isEmailTaken ?
+          {this.state.isEmailTaken &&
             <ErrMsg errMsg={this.state.errMsg}
-              closeErrMsg={this.closeErrMsg} />
-            : null}
+              closeErrMsg={this.closeErrMsg} />}
 
-          <label htmlFor='confirmPassword'>Confirm Password: </label>
-          <input type='password'
-            name='confirmPassword'
-            value={this.state.confirmPassword}
-            onChange={this.handleChange} />
+          {this.state.password.length > 0 &&
+            <Fragment>
+              <label htmlFor='confirmPassword'>Confirm Password: </label>
+              <input type='password'
+                name='confirmPassword'
+                value={this.state.confirmPassword}
+                onChange={this.handleChange} />
+            </Fragment>}
 
-
-          <button type='submit'>Submit</button>
-
-          <div>
-            <h5>Already signed up?</h5>
-            <div>Login Link</div>
-          </div>
+          <button id='signup-button'
+            type='submit'>Submit
+                  </button>
+          <nav id='signup-redirect'>
+            <h5>Already signed up?
+              <NavLink to='/auth/login'>Login</NavLink>
+            </h5>
+          </nav>
         </form>
       </section>
-    )
-  }
-}
+        )
+      }
+    }
 

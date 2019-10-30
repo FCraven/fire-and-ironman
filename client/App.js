@@ -1,12 +1,17 @@
 import React from 'react';
 import './App.css'
-import { SignUp } from './components/auth'
+import { Signup, Login } from './components/auth'
+import { Route, Switch } from 'react-router-dom'
+
 
 
 function App() {
   return (
     <section id="App">
-      <SignUp />
+      <Switch>
+        <Route exact path='/' component={Signup} />
+        <Route path='/auth/login' component={Login} />
+      </Switch>
     </section>
   );
 }

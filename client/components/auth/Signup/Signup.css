@@ -13,10 +13,29 @@
 
 #signup-form {
   display: flex;
+  position: relative;
   flex-flow: column wrap;
 }
 #signup-hr {
   width: 75%;
+}
+
+#signup-button {
+  position: relative;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em;
+  box-shadow: 0px 1px 10px 1px black;
+}
+
+#signup-button:hover {
+  position: relative;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em;
+  border: thin red solid;
+  box-shadow: 1px 1px 25px 0px #681206;
+  transform: scale(1.1)
 }
 
 #signup-form > input {
