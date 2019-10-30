@@ -5,30 +5,33 @@ const User = require('../db/User')
 
 
 router.post('/', async (req, res, next) => {
-  try{
+  try {
     const user = await User.findOne({
       where: {
         email: req.body.email
       }
-      })
+    })
 
-    if(user) {
+    if (user) {
       // req.login(user, err => {
       //   if (err) next(err);
       //   else res.json(user.sanitize());
       // });
-      res.status(202).send('That email is already being used. \nPlease enter another.')
+
+      res.redirect('/auth/login', 202)
+      //  res.status(202).send('That email is already being used. \nPlease enter another.')
+
       // .json(user.sanitize())
     } else {
-      const newUser =  await User.create(req.body)
+      const newUser = await User.create(req.body)
       // req.login(newUser, err => {
       //   if (err) next(err);
       //   else res.status(200).json(newUser.sanitize());
       // });
       res.status(200).json(newUser.sanitize())
     }
-  } catch(err){
-      next(err)
+  } catch (err) {
+    next(err)
   }
 });
 
