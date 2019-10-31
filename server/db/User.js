@@ -3,7 +3,10 @@ const db = require('./index')
 const crypto = require('crypto')
 const _ = require('lodash')
 
-const User = db.define('user', {
+const User = db.define('user', {,
+  name: {
+    type: Sequelize.STRING
+  },
   firstName: {
     type: Sequelize.STRING,
     allowNull: false
@@ -24,6 +27,9 @@ const User = db.define('user', {
     type: Sequelize.STRING,
   },
   salt: {
+    type: Sequelize.STRING
+  },
+  imageUrl: {
     type: Sequelize.STRING
   },
   googleId: {
