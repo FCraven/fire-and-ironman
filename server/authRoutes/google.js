@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../db');
+const User = require('../db/User');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require('../../secrets')
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require('../../secrets')
 
 
 // mounted on /auth/google
@@ -33,7 +33,7 @@ const verificationCallback = async (token, refreshToken, profile, done) => {
 
   try {
     const [user] = await User.findOrCreate({
-      where: {googleId: profile.id},
+      where: { googleId: profile.id },
       defaults: info
     })
     done(null, user) // the user we pass to done here is piped through passport.serializeUser

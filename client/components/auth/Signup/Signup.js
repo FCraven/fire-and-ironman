@@ -10,8 +10,7 @@ export default class SignUp extends Component {
     super(props)
 
     this.state = {
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -43,7 +42,6 @@ export default class SignUp extends Component {
       })
     }
     console.log(`STATE--->`, this.state)
-
   }
 
   closeErrMsg() {
@@ -75,17 +73,10 @@ export default class SignUp extends Component {
         </header>
         <hr id='signup-hr' />
         <form id='signup-form' onSubmit={this.handleSubmit}>
-          <label htmlFor='firstName'>First Name: </label>
-          <input name='firstName'
+          <label htmlFor='name'>First Name: </label>
+          <input name='name'
             type='text'
             value={this.state.firstName}
-            onChange={this.handleChange}
-            required />
-
-          <label htmlFor='lastName'>Last Name</label>
-          <input name='lastName'
-            type='text'
-            value={this.state.lastName}
             onChange={this.handleChange}
             required />
 
@@ -117,7 +108,7 @@ export default class SignUp extends Component {
             </Fragment>}
 
           <button id='signup-button'
-                  type='submit'>Submit
+            type='submit'>Submit
           </button>
 
           <nav id='signup-redirect'>
@@ -127,7 +118,7 @@ export default class SignUp extends Component {
           </nav>
         </form>
       </section>
-        )
-      }
-    }
+    )
+  }
+}
 

@@ -52,13 +52,13 @@ export default class Login extends Component {
           <button id='login-button'
                   type='submit'>Submit</button>
 
+
+        </form>
           <form method='get' action='/auth/google'>
             <button type='submit'>
                     Login with Google
             </button>
           </form>
-
-        </form>
       </section>
     )
   }

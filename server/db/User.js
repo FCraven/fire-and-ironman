@@ -3,17 +3,9 @@ const db = require('./index')
 const crypto = require('crypto')
 const _ = require('lodash')
 
-const User = db.define('user', {,
+const User = db.define('user', {
   name: {
-    type: Sequelize.STRING
-  },
-  firstName: {
     type: Sequelize.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
   },
   email: {
     type: Sequelize.STRING,
@@ -35,7 +27,7 @@ const User = db.define('user', {,
   googleId: {
     type: Sequelize.STRING
   }
-} , {
+}, {
   hooks: {
     beforeCreate: setSaltAndPassword,
     beforeUpdate: setSaltAndPassword
@@ -44,16 +36,16 @@ const User = db.define('user', {,
 );
 
 //Instance methods
-User.prototype.correctPassword = function(candidatePassword) {
+User.prototype.correctPassword = function (candidatePassword) {
   return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
 };
 
-User.prototype.sanitize = function() {
+User.prototype.sanitize = function () {
   return _.omit(this.toJSON(), ['password', 'salt']);
 }
 
 //Class methods
-User.generateSalt = function() {
+User.generateSalt = function () {
   return crypto.randomBytes(16).toString('base64');
 }
 
@@ -65,7 +57,7 @@ User.encryptPassword = function (plainText, salt) {
 }
 
 function setSaltAndPassword(user) {
-  if(user.changed('password')) {
+  if (user.changed('password')) {
     user.salt = User.generateSalt();
     user.password = User.encryptPassword(user.password, user.salt)
   }
