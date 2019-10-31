@@ -12,7 +12,7 @@ const parseurl = require('parseurl')
 const authRoutes = require('./authRoutes')
 const apiRoutes = require('./apiRoutes');
 const { SESSION_SECRET } = require('../secrets');
-// const User = require('./db/User')
+const User = require('./db/User')
 
 // Logging Middleware
 app.use(morgan('dev'))
@@ -37,21 +37,22 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// //Serialize user
-// passport.serializeUser((user, done) => {
-//   try {
-//     done(null, user.id);
-//   } catch (err) {
-//     done(err);
-//   }
-// });
 
-// //Deserialize user
-// passport.deserializeUser((id, done) => {
-//   User.findByPk(id)
-//     .then(user => done(null, user))
-//     .catch(done);
-// });
+// after we find or create a user, we 'serialize' our user on the session
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+})
+
+//If we've serialized the user on out session with an id, we look it up here and attach it as 'req.user'
+passport.deserializeUser(async (id,done) => {
+  try {
+    const user = await User.findById(id)
+    done(null,user)
+  } catch (err) {
+    done(err)
+  }
+})
+
 
 //store page views per user
 app.use(function (req, res, next) {
