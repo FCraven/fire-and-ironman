@@ -71,7 +71,7 @@ export default class SignUp extends Component {
     return (
       <section id='signup-container' >
         <header id='signup-header'>
-          SIGN UP
+          Sign Up
         </header>
         <hr id='signup-hr' />
         <form id='signup-form' onSubmit={this.handleSubmit}>
@@ -117,8 +117,9 @@ export default class SignUp extends Component {
             </Fragment>}
 
           <button id='signup-button'
-            type='submit'>Submit
-                  </button>
+                  type='submit'>Submit
+          </button>
+
           <nav id='signup-redirect'>
             <h5>Already signed up?
               <NavLink to='/auth/login'>Login</NavLink>

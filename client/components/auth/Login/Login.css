@@ -1,0 +1,36 @@
+#login-container {
+  height: 60%;
+  width: 40%;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background: rgba(110, 128, 146, 0.6);
+  border: thin black solid;
+
+}
+
+
+#login-header{
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-form {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.login-input {
+  margin: 2%;
+}
+
+#login-button {
+  margin: 1em;
+  padding: 1em;
+}
