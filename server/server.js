@@ -34,8 +34,8 @@ app.use(session({
 }));
 
 // Passport middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // //Serialize user
 // passport.serializeUser((user, done) => {
