@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const parseurl = require('parseurl')
 const authRoutes = require('./authRoutes')
 const apiRoutes = require('./apiRoutes');
+const routes = require('./routes')
 const { SESSION_SECRET } = require('../secrets');
 const User = require('./db/User')
 
@@ -43,7 +44,7 @@ passport.serializeUser((user, done) => {
   done(null, user.id)
 })
 
-//If we've serialized the user on out session with an id, we look it up here and attach it as 'req.user'
+//If we've serialized the user on the session with an id, look it up here and attach it as 'req.user'
 passport.deserializeUser(async (id,done) => {
   try {
     const user = await User.findByPk(id)
@@ -77,6 +78,8 @@ app.use('/auth', authRoutes)
 
 // API Routes
 app.use('/api', apiRoutes)
+
+app.use(routes)
 
 //If no routes match, send index.html
 app.get('*', function (req,res) {

@@ -18,7 +18,7 @@ router.post('/', async (req, res, next) => {
       //   else res.json(user.sanitize());
       // });
 
-      res.redirect('/auth/login')
+      res.status(202).json(user.sanitize())
       //  res.status(202).send('That email is already being used. \nPlease enter another.')
 
       // .json(user.sanitize())

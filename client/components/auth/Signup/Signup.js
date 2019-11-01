@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import './Signup.css'
-import { ErrMsg } from '../../util'
+// import { ErrMsg } from '../../util'
 import { NavLink } from 'react-router-dom'
 
 
@@ -20,7 +20,7 @@ export default class SignUp extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.closeErrMsg = this.closeErrMsg.bind(this)
+    // this.closeErrMsg = this.closeErrMsg.bind(this)
     // this.confirmPassword = this.confirmPassword.bind(this)
   }
 
@@ -44,12 +44,12 @@ export default class SignUp extends Component {
     console.log(`STATE--->`, this.state)
   }
 
-  closeErrMsg() {
-    this.setState({
-      isEmailTaken: false,
-      email: ''
-    })
-  }
+  // closeErrMsg() {
+  //   this.setState({
+  //     isEmailTaken: false,
+  //     email: ''
+  //   })
+  // }
 
   // confirmPassword() {
   //   const password = this.state.password;
@@ -93,19 +93,19 @@ export default class SignUp extends Component {
             value={this.state.password}
             onChange={this.handleChange}
             required />
-
+{/*
           {this.state.isEmailTaken &&
             <ErrMsg errMsg={this.state.errMsg}
-              closeErrMsg={this.closeErrMsg} />}
+              closeErrMsg={this.closeErrMsg} />} */}
 
-          {this.state.password.length > 0 &&
+          {/* {this.state.password.length > 0 &&
             <Fragment>
               <label htmlFor='confirmPassword'>Confirm Password: </label>
               <input type='password'
                 name='confirmPassword'
                 value={this.state.confirmPassword}
                 onChange={this.handleChange} />
-            </Fragment>}
+            </Fragment>} */}
 
           <button id='signup-button'
             type='submit'>Submit
