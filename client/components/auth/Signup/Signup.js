@@ -113,7 +113,7 @@ export default class SignUp extends Component {
 
           <nav id='signup-redirect'>
             <h5>Already signed up?
-              <NavLink to='/auth/login'>Login</NavLink>
+              <NavLink to='/login'>Login</NavLink>
             </h5>
           </nav>
         </form>

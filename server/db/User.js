@@ -37,7 +37,9 @@ const User = db.define('user', {
 
 //Instance methods
 User.prototype.correctPassword = function (candidatePassword) {
-  return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
+  return User.encryptPassword(candidatePassword, this.salt) === this.password;
+
+  // return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
 };
 
 User.prototype.sanitize = function () {

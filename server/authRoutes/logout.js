@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 // mounted on  /auth/logout
-router.delete('/logout', (req, res, next) => {
+router.delete('/', (req, res, next) => {
   req.logout()
   req.session.destroy((err) => {
     if (err) return next(err)

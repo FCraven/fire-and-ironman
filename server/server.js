@@ -9,7 +9,6 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const parseurl = require('parseurl')
-const authRoutes = require('./authRoutes')
 const apiRoutes = require('./apiRoutes');
 const routes = require('./routes')
 const { SESSION_SECRET } = require('../secrets');
@@ -48,8 +47,8 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id,done) => {
   try {
     const user = await User.findByPk(id)
-    console.log(`USER=--->`,user.sanitize())
-    done(null,user.sanitize())
+    user.sanitize()
+    done(null,user)
   } catch (err) {
     done(err)
   }
@@ -73,7 +72,7 @@ app.use(function (req, res, next) {
 //All routes below here
 
 //AUTH routes
-app.use('/auth', authRoutes)
+app.use('/auth', require('./authRoutes'))
 
 
 // API Routes
@@ -85,6 +84,13 @@ app.use(routes)
 app.get('*', function (req,res) {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 })
+
+//404 Error Handler
+app.use(function (req, res, next) {
+  const err = new Error('Not found.');
+  err.status = 404;
+  next(err);
+});
 
 //500
 app.use(function (err, req, res, next) {

@@ -11,7 +11,7 @@ function App() {
     <section id="App">
       <Switch>
         <Route exact path='/' component={Signup} />
-        <Route path='/auth/login' component={Login} />
+        <Route path='/login' component={Login} />
         <Route path='/home' component={Home} />
       </Switch>
     </section>
