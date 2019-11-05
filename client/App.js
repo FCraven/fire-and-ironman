@@ -3,6 +3,7 @@ import './App.css'
 import { Signup, Login } from './components/auth'
 import { Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
+import LoginTest from './components/LoginTest'
 
 
 
@@ -13,6 +14,7 @@ function App() {
         <Route exact path='/' component={Signup} />
         <Route path='/login' component={Login} />
         <Route path='/home' component={Home} />
+        <Route path='/logintest' component={LoginTest} />
       </Switch>
     </section>
   );
