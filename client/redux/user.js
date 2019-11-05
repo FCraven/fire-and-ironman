@@ -1,9 +1,7 @@
 import axios from 'axios'
 
 //initial state
-const initialState = {
-  user: {}
-}
+const initialState = {}
 
 //action type
 export const GET_USER = 'GET_USER'
@@ -40,7 +38,7 @@ const userReducer =(state = initialState, action)=> {
     case GET_USER:
       return {
         ...state,
-        user: action.user
+        ...action.user
       }
     default:
       return state

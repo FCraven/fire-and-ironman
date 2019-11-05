@@ -5,7 +5,8 @@ import { logout } from '../../redux/user'
 
 const Home = (props) => {
   const { user, handleClick } = props
-  console.log(`USER--->`, user)
+  console.log(`STATE-->`, props.state)
+
 
   if (!user.id) {
     return <Redirect to='/' />
@@ -34,6 +35,7 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    state,
     user: state.user
   }
 }

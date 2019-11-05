@@ -1,15 +1,17 @@
-import { createStore, applyMiddleware } from 'redux'
-import userReducer from './user'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import user from './user'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
+const reducer = combineReducers({user})
 
 const store = createStore(
-  userReducer,
+  reducer,
   applyMiddleware(
     thunkMiddleware,
     createLogger()
   )
 )
+
 
 export default store;
