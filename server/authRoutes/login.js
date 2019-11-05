@@ -12,11 +12,11 @@ router.put('/', async (req, res, next) => {
     })
 
     if(!user){
-      res.status(401).send('User not found')
+        res.status(401).send('User not found')
     } else if (!user.correctPassword(req.body.password)) {
-      res.status(401).send('Incorrect password!')
+        res.status(401).send('Incorrect password!')
     } else {
-      req.login(user, (err) => err ? next(err) : res.json(user.sanitize()))
+        req.login(user, (err) => err ? next(err) : res.json(user.sanitize()))
     }
   } catch (err) {
     next(err)
