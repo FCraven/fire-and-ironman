@@ -47,8 +47,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         .then(() => {
           ownProps.history.push('/')
         })
+      }
     }
   }
-}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

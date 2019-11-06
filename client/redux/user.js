@@ -1,14 +1,21 @@
 import axios from 'axios'
+import store from './store'
 
 //initial state
 const initialState = {}
 
 //action type
-export const GET_USER = 'GET_USER'
+const GET_USER = 'GET_USER'
+const LOGOUT_USER = 'LOGOUT_USER'
 
 //action creator
 export const gotMe =(user)=> ({
   type: GET_USER,
+  user
+})
+
+export const logoutMe =(user)=> ({
+  type: LOGOUT_USER,
   user
 })
 
@@ -29,7 +36,9 @@ export const login = (formData) => dispatch => {
 
 export const logout = () => dispatch => {
   return axios.delete('/auth/logout')
-    .then(() => dispatch(gotMe(initialState.user)))
+    // .then(() => dispatch(gotMe(initialState)))
+    .then(() => dispatch(logoutMe(initialState)))
+    .then((console.log(`LOGOUT-->`,store.getState())))
     .catch(console.error.bind(console))
 }
 
@@ -40,6 +49,10 @@ const userReducer =(state = initialState, action)=> {
         ...state,
         ...action.user
       }
+
+    case LOGOUT_USER: {
+      return {}
+    }
     default:
       return state
   }
