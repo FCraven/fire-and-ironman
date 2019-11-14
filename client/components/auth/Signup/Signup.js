@@ -32,7 +32,12 @@ export default class SignUp extends Component {
 
   async handleSubmit(event) {
     event.preventDefault()
-    const newUser = this.state
+    const { name, password, email } = this.state
+    const newUser = {
+      name,
+      password,
+      email
+    }
     const res = await axios.post('/auth/signup', newUser)
 
     if (res.status === 202) {

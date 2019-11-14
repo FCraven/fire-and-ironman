@@ -3,7 +3,6 @@ const User = require('../db/User')
 
 //mounted on /auth/signup
 
-
 router.post('/', async (req, res, next) => {
   try {
     const user = await User.findOne({
@@ -29,8 +28,5 @@ router.post('/', async (req, res, next) => {
       next(err)
   }
 });
-
-
-
 
 module.exports = router
