@@ -1,36 +1,40 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { login } from '../../../redux/user'
 import LocalLogin from './LocalLogin'
 import GoogleLogin from './GoogleLogin'
 import './Login.css'
 
-const Login =(props)=> {
-  const {handleSubmit} = props
+const Login = (props) => {
+  const { handleSubmit } = props
 
-    return (
-      <section id='login-container'>
-        <header id='login-header'>
-          <h2>Welcome Back!</h2>
-          <h4>Please enter info below to login</h4>
-        </header>
-        <LocalLogin handleSubmit={handleSubmit} />
-        <GoogleLogin />
-      </section>
-    )
+  return (
+    <section id='login-container'>
+      <div id='login-signup-header' className=''>
+        <div id='login-link'>Login</div>
+        <div id='signup-link'>Sign Up</div>
+      </div>
+      <header id='login-header'>
+        <h2>Welcome Back!</h2>
+        <h4>Please enter info below to login</h4>
+      </header>
+      <LocalLogin handleSubmit={handleSubmit} />
+      <GoogleLogin />
+    </section>
+  )
 }
 
-const mapDispatch =(dispatch, ownProps)=> {
-  return{
+const mapDispatch = (dispatch, ownProps) => {
+  return {
     handleSubmit(evt) {
       evt.preventDefault()
       const email = evt.target.email.value
       const password = evt.target.password.value
       console.log(`--> ${email} `, ` ----->PW ${password}`)
-      dispatch(login({email,password}))
-      .then(() => {
-        ownProps.history.push('/home')
-      })
+      dispatch(login({ email, password }))
+        .then(() => {
+          ownProps.history.push('/home')
+        })
     }
   }
 }
