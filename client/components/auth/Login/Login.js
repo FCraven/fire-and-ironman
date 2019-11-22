@@ -9,6 +9,7 @@ const Login = (props) => {
   const { handleSubmit } = props
 
   return (
+    <div id='login-background'>
     <section id='login-container'>
       <div id='login-signup-header' className=''>
         <div id='login-link'>Login</div>
@@ -21,6 +22,7 @@ const Login = (props) => {
       <LocalLogin handleSubmit={handleSubmit} />
       <GoogleLogin />
     </section>
+    </div>
   )
 }
 
