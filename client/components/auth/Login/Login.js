@@ -11,9 +11,9 @@ const Login = (props) => {
   return (
     <div id='login-background'>
     <section id='login-container'>
-      <div id='login-signup-header' className=''>
-        <div id='login-link'>Login</div>
-        <div id='signup-link'>Sign Up</div>
+      <div id='login-signup-header' className='flex row'>
+        <div id='login-link' className='m-1'>Login</div>
+        <div id='signup-link' className='m-1'>Sign Up</div>
       </div>
       <header id='login-header'>
         <h2>Welcome Back!</h2>
