@@ -12,7 +12,10 @@ const Login = (props) => {
     <div id='login-background'>
     <section id='login-container'>
       <div id='login-signup-header' className='flex row'>
+
+        TODO change to NavLink to change components
         <div id='login-link' className='m-1'>Login</div>
+        TODO change to NavLink to change Component
         <div id='signup-link' className='m-1'>Sign Up</div>
       </div>
       <header id='login-header'>
