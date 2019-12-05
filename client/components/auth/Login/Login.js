@@ -13,9 +13,9 @@ const Login = (props) => {
     <section id='login-container'>
       <div id='login-signup-header' className='flex row'>
 
-        TODO change to NavLink to change components
+        {/*change to NavLink to change components */}
         <div id='login-link' className='m-1'>Login</div>
-        TODO change to NavLink to change Component
+        {/*change to NavLink to change Component */}
         <div id='signup-link' className='m-1'>Sign Up</div>
       </div>
       <header id='login-header'>
