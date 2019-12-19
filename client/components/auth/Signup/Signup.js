@@ -74,7 +74,14 @@ export default class SignUp extends Component {
     return (
       <section id='signup-container' >
         <header id='signup-header'>
-          Sign Up
+          <div id='signup-link'
+                className='signup-header-links'>
+                Sign Up</div>
+          <div id='login-navlink'
+                className='signup-header-links'>
+            <NavLink to='/login'>
+                    Login</NavLink>
+          </div>
         </header>
         <hr id='signup-hr' />
         <form id='signup-form' onSubmit={this.handleSubmit}>

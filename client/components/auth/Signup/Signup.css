@@ -4,11 +4,29 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  background-color: slategrey;
+  background-color: #EFFFF1;
   padding: 3em;
-  box-shadow: 0px 3px 25px 13px rgba(0,0,0,0.50);
+  box-shadow: 0px 10px 30px 2px rgba(52, 75, 55, 0.4);
   border-radius: 1em;
   border: 2px solid black;
+}
+
+#signup-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color:  rgba(52, 75, 55, 0.4);
+  border-radius: 1em;
+}
+
+.signup-header-links {
+  padding: 2em;
+}
+
+#signup-link {
+  font-size: 5vh;
+
 }
 
 #signup-form {
